@@ -1,0 +1,13 @@
+/* src/components/Auth/Login.css */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 16px;
+  background: #f5f7fa;
+}
+
+.login-card {
+  width: 380px;
+}
