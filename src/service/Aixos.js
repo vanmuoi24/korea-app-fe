@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8080/api",
+  baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:8080/api",
   timeout: 10000,
   withCredentials: true,
 });
 
-// Request Interceptor: gắn token từ localStorage
+// Request Interceptor
 instance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -18,9 +18,9 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response Interceptor: bắt lỗi và xử lý redirect
+// Response Interceptor
 instance.interceptors.response.use(
-  (response) => response,
+  (response) => response.data, // 👉 trả về trực tiếp data thay vì cả response
   (error) => {
     console.error("❌ API Error:", error.response?.status, error.message);
 
