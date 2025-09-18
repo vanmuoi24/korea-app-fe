@@ -12,16 +12,12 @@ const RouteApp = () => {
       <Route path="/member/:id" element={<App />} />
       <Route path="/login" element={<Login />} />
       {/* Nếu AdminSidebar là layout cho trang admin */}
-      <Route path="/admin" element={<AdminSidebar />}>
+      <Route path="/" element={<AdminSidebar />}>
         <Route
           path="managerInformation"
           element={<ManagerInformation />}
         ></Route>
         <Route path="managerTime" element={<ManageTime />}></Route>
-        {/* route con trong admin */}
-        {/* ví dụ: */}
-        {/* <Route index element={<Dashboard />} /> */}
-        {/* <Route path="company" element={<Company />} /> */}
       </Route>
     </Routes>
   );

@@ -71,7 +71,7 @@ const ModalUserAddNew = ({
             name="ngaybieumau"
             label="Ngày biểu mẫu"
             fieldProps={{
-              format: "YYYY-MM-DD",
+              format: "DD-MM-YYYY",
               style: { width: "100%" },
             }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
@@ -109,7 +109,7 @@ const ModalUserAddNew = ({
             name="ngaySinh"
             label="Ngày sinh"
             placeholder="Chọn ngày sinh"
-            fieldProps={{ format: "YYYY-MM-DD" }}
+            fieldProps={{ format: "DD-MM-YYYY" }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
           />
         </Col>
@@ -190,7 +190,7 @@ const ModalUserAddNew = ({
             name="ngayXacNhan"
             label="Ngày xác nhận"
             fieldProps={{
-              format: "YYYY-MM-DD",
+              format: "DD-MM-YYYY",
               style: { width: "100%" },
             }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
@@ -201,7 +201,7 @@ const ModalUserAddNew = ({
             name="ngayHen"
             label="Phiếu có giá trị từ ngày"
             fieldProps={{
-              format: "YYYY-MM-DD",
+              format: "DD-MM-YYYY",
               style: { width: "100%" },
             }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
@@ -212,7 +212,7 @@ const ModalUserAddNew = ({
             name="ngayTao"
             label="Đến ngày"
             fieldProps={{
-              format: "YYYY-MM-DD",
+              format: "DD-MM-YYYY",
               style: { width: "100%" },
             }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}

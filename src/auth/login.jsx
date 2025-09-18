@@ -14,7 +14,7 @@ const Login = () => {
         toast.success("Đăng nhập thành công!");
         localStorage.setItem("token", response.data.data.token);
         setTimeout(() => {
-          navi("/admin/managerInformation");
+          navi("/");
         });
       }
     } catch (error) {

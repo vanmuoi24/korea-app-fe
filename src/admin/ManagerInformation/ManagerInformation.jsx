@@ -9,27 +9,28 @@ import {
 import { Button, Input, Popconfirm, Space, message, DatePicker } from "antd";
 import { ProTable } from "@ant-design/pro-components";
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import ModalUserAddNew from "./ModalUserAddNew";
 import { deleteForm, fechAllTime, fetchForms } from "../../service/formAPI";
 import ModalUserEdit from "./ModalUserEdit";
 import { useNavigate } from "react-router-dom";
 
+dayjs.extend(customParseFormat);
+
 const ManagerInformation = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
-  const [openModalView, setOpenModalView] = useState(false);
   const [dataEdit, setDataEdit] = useState(null);
-  const [dataView, setDataView] = useState(null);
   const [dataTime, setDataTime] = useState([]);
   const [data, setData] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(0);
   const [size, setSize] = useState(5);
   const [total, setTotal] = useState(0);
   const navi = useNavigate();
+
   // state cho tìm kiếm
   const [searchName, setSearchName] = useState("");
-  const [searchAddress, setSearchAddress] = useState("");
+  const [searchEmail, setSearchEmail] = useState("");
   const [searchNgaySinh, setSearchNgaySinh] = useState(null);
   const [searchNgayHen, setSearchNgayHen] = useState(null);
 
@@ -81,22 +82,24 @@ const ManagerInformation = () => {
     }
   };
 
-  // 🔹 Lọc dữ liệu theo input
+  // 🔎 Filter
   const filteredData = data.filter((item) => {
     const matchName = searchName
       ? item.hoTen?.toLowerCase().includes(searchName.toLowerCase())
       : true;
-    const matchAddress = searchAddress
-      ? item.email?.toLowerCase().includes(searchAddress.toLowerCase())
-      : true;
-    const matchNgaySinh = searchNgaySinh
-      ? dayjs(item.ngaySinh).isSame(searchNgaySinh, "day")
-      : true;
-    const matchNgayHen = searchNgayHen
-      ? dayjs(item.ngayHen).isSame(searchNgayHen, "day")
+    const matchEmail = searchEmail
+      ? item.email?.toLowerCase().includes(searchEmail.toLowerCase())
       : true;
 
-    return matchName && matchAddress && matchNgaySinh && matchNgayHen;
+    const matchNgaySinh = searchNgaySinh
+      ? dayjs(item.ngaySinh, "DD-MM-YYYY").isSame(searchNgaySinh, "day")
+      : true;
+
+    const matchNgayHen = searchNgayHen
+      ? dayjs(item.ngayHen, "DD-MM-YYYY").isSame(searchNgayHen, "day")
+      : true;
+
+    return matchName && matchEmail && matchNgaySinh && matchNgayHen;
   });
 
   // 🔹 Cột bảng
@@ -112,8 +115,10 @@ const ManagerInformation = () => {
     {
       title: "Ngày sinh",
       dataIndex: "ngaySinh",
-      render: (val) => dayjs(val).format("DD/MM/YYYY"),
+      render: (val) =>
+        val ? dayjs(val, "DD-MM-YYYY").format("DD-MM-YYYY") : "",
     },
+    { title: "Email", dataIndex: "email" },
     { title: "Loại giấy tờ XN", dataIndex: "loaiGiayToXN" },
     { title: "Loại bằng cấp", dataIndex: "loaiBangCap" },
     { title: "Số hiệu bằng", dataIndex: "soHieuBang" },
@@ -123,23 +128,26 @@ const ManagerInformation = () => {
     {
       title: "Điểm tốt nghiệp",
       dataIndex: "diemTotNghiep",
-      render: (val) => val?.toFixed(2),
+      render: (val) => (val !== undefined ? val.toFixed(2) : ""),
     },
     {
       title: "Ngày hẹn",
       dataIndex: "ngayHen",
-      render: (val) => dayjs(val).format("DD/MM/YYYY"),
+      render: (val) =>
+        val ? dayjs(val, "DD-MM-YYYY").format("DD-MM-YYYY") : "",
     },
     { title: "Khung giờ", dataIndex: ["khungGio", "khungGio"] },
     {
       title: "Ngày tạo",
       dataIndex: "ngayTao",
-      render: (val) => dayjs(val).format("DD/MM/YYYY"),
+      render: (val) =>
+        val ? dayjs(val, "DD-MM-YYYY").format("DD-MM-YYYY") : "",
     },
     {
       title: "Ngày xác nhận",
       dataIndex: "ngayXacNhan",
-      render: (val) => dayjs(val).format("DD/MM/YYYY"),
+      render: (val) =>
+        val ? dayjs(val, "DD-MM-YYYY").format("DD-MM-YYYY") : "",
     },
     {
       title: "Actions",
@@ -186,20 +194,18 @@ const ManagerInformation = () => {
           placeholder="Chọn ngày sinh"
           value={searchNgaySinh}
           onChange={(val) => setSearchNgaySinh(val)}
-          format="DD/MM/YYYY"
+          format="DD-MM-YYYY"
         />
         <DatePicker
           placeholder="Chọn ngày hẹn"
           value={searchNgayHen}
           onChange={(val) => setSearchNgayHen(val)}
-          format="DD/MM/YYYY"
+          format="DD-MM-YYYY"
         />
         <Button
           icon={<SearchOutlined />}
           type="primary"
-          onClick={() => {
-            // Không cần reload, filter đã xử lý sẵn
-          }}
+          onClick={() => setCurrentPage(0)} // reset về trang đầu khi tìm
         >
           Tìm kiếm
         </Button>

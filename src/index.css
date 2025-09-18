@@ -5,7 +5,7 @@ body {
   padding-top: 20px;
   overflow-x: hidden;
   height: 100%;
-  color: #000;
+
   font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
 body.no-padding-top {
@@ -8631,9 +8631,32 @@ table {
   #windowsClose {
     display: none;
   }
-  .table th {
+  .cap th {
     background: grey !important;
-    color: #fff;
+    color: #000;
+  }
+  .cap th {
+    background: grey !important;
+    color: #000;
+  }
+  #math {
+    color: #000;
+  }
+  #math1 {
+    color: #000;
+  }
+  #math2 {
+    color: #000;
+  }
+  #math3 {
+    color: #000;
+  }
+  #math4 {
+    color: #000;
+  }
+
+  .math5 {
+    color: #000 !important;
   }
 }
 /* Home.css – nạp sau bootstrap.min.css */
@@ -8642,7 +8665,7 @@ table {
   --bs-table-striped-bg: #f8f9fa; /* bỏ stripe nếu có */
   --bs-table-hover-bg: #f8f9fa; /* bỏ hover */
   --bs-table-active-bg: #f8f9fa; /* bỏ active */
-  --bs-table-color: #212529; /* màu chữ */
+  --bs-table-color: #000; /* màu chữ */
 }
 .table-th-block.cap th {
   background-color: #f6bb42; /* màu nền th */
@@ -8685,4 +8708,12 @@ table {
 
   border-color: #e6e9ed;
   border: 1px solid #e6e9ed;
+}
+.info-box {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.info-note {
+  margin: 10px 0;
 }

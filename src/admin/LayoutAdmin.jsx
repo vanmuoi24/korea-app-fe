@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {
   AppstoreOutlined,
-  ExceptionOutlined,
-  ApiOutlined,
-  UserOutlined,
-  BankOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  AliwangwangOutlined,
-  ScheduleOutlined,
   BugOutlined,
   FieldTimeOutlined,
 } from "@ant-design/icons";
@@ -17,13 +11,10 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const { Content, Sider } = Layout;
 
-const AdminSidebar = ({ children }) => {
+const AdminSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [activeMenu, setActiveMenu] = useState("/admin");
-
   const location = useLocation();
-  const navigate = useNavigate();
-
   useEffect(() => {
     setActiveMenu(location.pathname || "/admin");
   }, [location.pathname]);
@@ -31,20 +22,20 @@ const AdminSidebar = ({ children }) => {
   const menuItems = [
     {
       label: (
-        <Link to="/admin/managerInformation" style={{ textDecoration: "none" }}>
+        <Link to="/managerInformation" style={{ textDecoration: "none" }}>
           Quản lí thông tin{" "}
         </Link>
       ),
-      key: "/admin/managerInformation",
+      key: "/managerInformation",
       icon: <AppstoreOutlined />,
     },
     {
       label: (
-        <Link to="/admin/managerTime" style={{ textDecoration: "none" }}>
+        <Link to="/managerTime" style={{ textDecoration: "none" }}>
           Quản lí Thời Gian{" "}
         </Link>
       ),
-      key: "/admin/managerTime",
+      key: "/managerTime",
       icon: <FieldTimeOutlined />,
     },
   ];
@@ -58,7 +49,10 @@ const AdminSidebar = ({ children }) => {
       label: (
         <span
           style={{ cursor: "pointer" }}
-          onClick={() => console.log("logout")}
+          onClick={() => {
+            localStorage.clear();
+            window.location.href = "/login";
+          }}
         >
           Đăng xuất
         </span>
@@ -129,7 +123,40 @@ const AdminSidebar = ({ children }) => {
                 paddingRight: 8,
               }}
             >
-              <Outlet />
+              {location.pathname === "/" ? (
+                // 👇 Banner chữ chạy ở đây
+                <div
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                    color: "#1890ff",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "inline-block",
+                      animation: "marquee 12s linear infinite",
+                    }}
+                  >
+                    🚀 Chào mừng bạn đến với trang quản trị – Quản lý dữ liệu dễ
+                    dàng 🚀
+                  </div>
+
+                  {/* CSS cho animation chữ chạy */}
+                  <style>
+                    {`
+            @keyframes marquee {
+              0% { transform: translateX(100%); }
+              100% { transform: translateX(-100%); }
+            }
+          `}
+                  </style>
+                </div>
+              ) : (
+                <Outlet />
+              )}
             </div>
           </Content>
         </Layout>

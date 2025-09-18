@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import logo from "./logo.png";
 import { useParams } from "react-router-dom";
 import { viewFromDetail } from "../../service/formAPI";
+import { color } from "framer-motion";
 
 const Home = () => {
   const { id } = useParams();
@@ -20,11 +21,12 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div id="page-wrap">
+      <div id="page-wrap" style={{ color: "black" }}>
         <table
           style={{
             width: "100%",
             border: "0px solid !important",
+            color: "black",
           }}
         >
           <tbody>
@@ -57,7 +59,9 @@ const Home = () => {
                   className="btn btn-primary"
                   style={{ fontSize: "14px" }}
                   target="_blank"
+                  id="printButton1"
                   rel="noreferrer"
+                  onClick={() => window.print()}
                 >
                   <i className="fa fa-print" style={{ fontSize: "12px" }}></i>{" "}
                   Print
@@ -75,7 +79,7 @@ const Home = () => {
         <p style={{ margin: "20px 0 25px 0" }}></p>
         <h3
           className="btn btn-default btn-lg no-outline"
-          style={{ fontSize: "20px" }}
+          style={{ fontSize: "20px", color: "black" }}
         >
           {data.thu}, ngày {data.ngaybieumau}, Khung giờ từ{" "}
           {data.khungGio?.khungGio}
@@ -111,9 +115,13 @@ const Home = () => {
         <table className="table table-th-block cap ">
           <thead>
             <tr>
-              <th style={{ width: "40%" }}>Loại bằng cấp:</th>
+              <th style={{ width: "40%" }} id="math3">
+                Loại bằng cấp:
+              </th>
               <th>
-                <span className="caodang">{data.loaiBangCap}</span>
+                <span className="caodang" id="math4">
+                  {data.loaiBangCap}
+                </span>
               </th>
             </tr>
           </thead>
@@ -141,7 +149,7 @@ const Home = () => {
           <thead>
             <tr style={{ background: "#37BC9B", color: "#fff" }}>
               <th style={{ width: "40%" }}>&nbsp;</th>
-              <th>Bằng tốt nghiệp</th>
+              <th id="math1">Bằng tốt nghiệp</th>
             </tr>
           </thead>
           <tbody>
@@ -160,7 +168,7 @@ const Home = () => {
           <thead>
             <tr style={{ background: "#37BC9B", color: "#fff" }}>
               <th style={{ width: "40%" }}>&nbsp;</th>
-              <th>Bảng điểm</th>
+              <th id="math">Bảng điểm</th>
             </tr>
           </thead>
           <tbody>
@@ -179,7 +187,7 @@ const Home = () => {
           </tbody>
         </table>
         <p style={{ margin: "25px 10px 27px 10px" }}></p>
-        <table className="table table-th-block">
+        <table className="table table-th-block" style={{ marginTop: "40px" }}>
           <tbody>
             <tr>
               <td
@@ -203,9 +211,10 @@ const Home = () => {
                     fontSize: "30px",
                     fontWeight: "500",
                   }}
+                  id="math5"
                 >
                   &nbsp;&nbsp; Kết quả xác minh:
-                  <b className="mx-2" style={{ color: "#37BC9B" }}>
+                  <b className="mx-2 math5" style={{ color: "#37BC9B" }}>
                     Chính xác
                   </b>
                 </span>
@@ -219,9 +228,7 @@ const Home = () => {
                   fontWeight: "bold",
                 }}
               >
-                Phiếu có giá trị từ ngày:
-                <span>{data.ngayHen}</span>
-                đến ngày
+                Phiếu có giá trị từ ngày: <span>{data.ngayHen}</span> đến ngày{" "}
                 <span>{data.ngayTao}</span>
               </td>
             </tr>
@@ -239,17 +246,16 @@ const Home = () => {
           </span>
         </div>
 
-        <p style={{ textAlign: "center", margin: "20px 0" }}>
-          * Thông tin tại biểu này được dùng để Nộp đăng ký xác nhận lãnh sự
-          bằng cấp tại Đại sứ quán Hàn Quốc tại Việt Nam.
-        </p>
-
-        <p style={{ textAlign: "center" }}>
+        <div className="info-box">
+          <p className="info-note">
+            * Thông tin tại biểu này được dùng để Nộp đăng ký xác nhận lãnh sự
+            bằng cấp tại Đại sứ quán Hàn Quốc tại Việt Nam.
+          </p>
           <em>
             Nếu cần thêm thông tin, liên hệ Số điện thoại{" "}
             <b>024.3886.6868 máy lẻ 111</b> hoặc email <b>korea@ciec.vn</b>
           </em>
-        </p>
+        </div>
 
         <p>&nbsp;</p>
         <div style={{ clear: "both" }}>&nbsp;</div>

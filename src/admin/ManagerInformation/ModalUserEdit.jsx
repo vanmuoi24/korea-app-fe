@@ -46,19 +46,19 @@ const ModalUserEdit = ({
     const formattedValues = {
       ...values,
       ngaybieumau: values.ngaybieumau
-        ? dayjs(values.ngaybieumau).format("YYYY-MM-DD")
+        ? dayjs(values.ngaybieumau).format("DD-MM-YYYY")
         : null,
       ngaySinh: values.ngaySinh
-        ? dayjs(values.ngaySinh).format("YYYY-MM-DD")
+        ? dayjs(values.ngaySinh).format("DD-MM-YYYY")
         : null,
       ngayXacNhan: values.ngayXacNhan
-        ? dayjs(values.ngayXacNhan).format("YYYY-MM-DD")
+        ? dayjs(values.ngayXacNhan).format("DD-MM-YYYY")
         : null,
       ngayHen: values.ngayHen
-        ? dayjs(values.ngayHen).format("YYYY-MM-DD")
+        ? dayjs(values.ngayHen).format("DD-MM-YYYY")
         : null,
       ngayTao: values.ngayTao
-        ? dayjs(values.ngayTao).format("YYYY-MM-DD")
+        ? dayjs(values.ngayTao).format("DD-MM-YYYY")
         : null,
       khungGioId: values.khungGioId ?? data.khungGioId,
       thu: values.thu ?? data.thu,
@@ -107,7 +107,7 @@ const ModalUserEdit = ({
           <ProFormDatePicker
             name="ngaybieumau"
             label="Ngày biểu mẫu"
-            fieldProps={{ format: "YYYY-MM-DD", style: { width: "100%" } }}
+            fieldProps={{ format: "DD-MM-YYYY", style: { width: "100%" } }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
           />
         </Col>
@@ -143,7 +143,7 @@ const ModalUserEdit = ({
             name="ngaySinh"
             label="Ngày sinh"
             placeholder="Chọn ngày sinh"
-            fieldProps={{ format: "YYYY-MM-DD" }}
+            fieldProps={{ format: "DD-MM-YYYY" }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
           />
         </Col>
@@ -227,7 +227,7 @@ const ModalUserEdit = ({
           <ProFormDatePicker
             name="ngayXacNhan"
             label="Ngày xác nhận"
-            fieldProps={{ format: "YYYY-MM-DD", style: { width: "100%" } }}
+            fieldProps={{ format: "DD-MM-YYYY", style: { width: "100%" } }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
           />
         </Col>
@@ -235,7 +235,7 @@ const ModalUserEdit = ({
           <ProFormDatePicker
             name="ngayHen"
             label="Phiếu có giá trị từ ngày"
-            fieldProps={{ format: "YYYY-MM-DD", style: { width: "100%" } }}
+            fieldProps={{ format: "DD-MM-YYYY", style: { width: "100%" } }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
           />
         </Col>
@@ -243,7 +243,7 @@ const ModalUserEdit = ({
           <ProFormDatePicker
             name="ngayTao"
             label="Đến ngày"
-            fieldProps={{ format: "YYYY-MM-DD", style: { width: "100%" } }}
+            fieldProps={{ format: "DD-MM-YYYY", style: { width: "100%" } }}
             rules={[{ required: true, message: "Không được bỏ trống" }]}
           />
         </Col>
