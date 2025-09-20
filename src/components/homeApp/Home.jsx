@@ -176,7 +176,10 @@ const Home = () => {
             <tr>
               <td>Điểm tốt nghiệp/Điểm xếp loại:</td>
               <td>
-                {data.diemTotNghiep}
+                {data.diemTotNghiep && data.diemTotNghiep.toFixed(2)}
+                {data.diemTotNghiep && data.diemTotNghiep.toFixed(2) === "0.00"
+                  ? ".0"
+                  : ""}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Thang điểm: Hệ 10
               </td>
