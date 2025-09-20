@@ -89,7 +89,7 @@ const Home = () => {
         <h2
           style={{ textAlign: "center", lineHeight: "1.5", fontSize: "30px" }}
         >
-          CIEC Code: <strong>25085493</strong>
+          CIEC Code: <strong>{data.maICD}</strong>
         </h2>
         <p style={{ margin: "35px 10px 22px 10px" }}></p>
 
@@ -137,10 +137,7 @@ const Home = () => {
             </tr>
             <tr>
               <td>Ghi chú:</td>
-              <td>
-                cdcnxd@cic.edu.vn - cdcnxdub@cic.edu.vn Điện thoại: 02033.862091
-                - 02033.969661
-              </td>
+              <td>{data.ghiChu}</td>
             </tr>
           </tbody>
         </table>
@@ -174,7 +171,7 @@ const Home = () => {
           <tbody>
             <tr>
               <td>Mã SV/HV:</td>
-              <td>K34 (cấp lại)</td>
+              <td>{data.maSV}</td>
             </tr>
             <tr>
               <td>Điểm tốt nghiệp/Điểm xếp loại:</td>
@@ -260,7 +257,7 @@ const Home = () => {
         <p>&nbsp;</p>
         <div style={{ clear: "both" }}>&nbsp;</div>
         <a
-          href="https://korea.ciec.vn/"
+          href="#"
           id="backlink"
           className="my-link outline-none text-decoration-none "
         >
