@@ -183,7 +183,7 @@ const Home = () => {
                       : data.diemTotNghiep.toString()) // giữ nguyên
                 }
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Thang điểm: Hệ 10
+                Thang điểm: {data.thangDiem}
               </td>
             </tr>
           </tbody>
