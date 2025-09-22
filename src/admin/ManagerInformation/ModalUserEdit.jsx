@@ -63,6 +63,7 @@ const ModalUserEdit = ({
         ghiChu: data.ghiChu ?? undefined,
         maSV: data.maSV ?? undefined,
         thu: data.thu ?? undefined,
+        thangDiem: data.thangDiem ?? undefined,
       });
     } else {
       form.resetFields();
