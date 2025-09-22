@@ -224,7 +224,7 @@ const ModalUserAddNew = ({
       </Row>
 
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={12}>
+        <Col xs={24} sm={8}>
           <ProFormDigit
             name="namTotNghiep"
             label="Năm tốt nghiệp"
@@ -234,7 +234,7 @@ const ModalUserAddNew = ({
             ]}
           />
         </Col>
-        <Col xs={24} sm={12}>
+        <Col xs={24} sm={8}>
           <ProFormDigit
             name="diemTotNghiep"
             label="Điểm tốt nghiệp"
@@ -242,6 +242,14 @@ const ModalUserAddNew = ({
             rules={[
               { required: true, message: "Vui lòng nhập điểm tốt nghiệp" },
             ]}
+          />
+        </Col>
+        <Col xs={24} sm={8}>
+          <ProFormText
+            name="thangDiem"
+            label="Thang Điểm"
+            placeholder="Nhập ngành học"
+            rules={[{ required: true, message: "Vui lòng nhập thang điểm" }]}
           />
         </Col>
       </Row>
