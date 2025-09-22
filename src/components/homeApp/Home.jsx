@@ -176,10 +176,11 @@ const Home = () => {
             <tr>
               <td>Điểm tốt nghiệp/Điểm xếp loại:</td>
               <td>
-                {data.diemTotNghiep &&
-                  (data.diemTotNghiep >= 1 && data.diemTotNghiep <= 6
-                    ? data.diemTotNghiep.toFixed(1) // thêm .0
-                    : data.diemTotNghiep.toString()) // giữ nguyên
+                {
+                  data.diemTotNghiep &&
+                    (data.diemTotNghiep >= 1 && data.diemTotNghiep <= 6
+                      ? data.diemTotNghiep.toFixed(1) // thêm .0
+                      : data.diemTotNghiep.toString()) // giữ nguyên
                 }
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Thang điểm: Hệ 10
@@ -261,7 +262,7 @@ const Home = () => {
         <p>&nbsp;</p>
         <div style={{ clear: "both" }}>&nbsp;</div>
         <a
-          href="#"
+          href="https://korea.ciec.vn/"
           id="backlink"
           className="my-link outline-none text-decoration-none "
         >
