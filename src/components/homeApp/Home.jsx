@@ -42,7 +42,7 @@ const Home = () => {
 
               <td>
                 <img
-                  src={`https://deloy-fe-5.onrender.com/api/bieumau/${id}/qr`}
+                  src={`http://localhost:8080/api/bieumau/${id}/qr`}
                   alt="QR Code"
                   style={{ width: 168, height: 168, marginLeft: "50px" }}
                 />

@@ -46,7 +46,6 @@ const ModalUserEdit = ({
   // ================================
   useEffect(() => {
     if (open && data) {
-      console.log(data);
       form.setFieldsValue({
         ...data,
         ngaybieumau: data.ngaybieumau

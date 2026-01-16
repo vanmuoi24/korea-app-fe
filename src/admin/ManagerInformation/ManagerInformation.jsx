@@ -109,7 +109,6 @@ const ManagerInformation = () => {
     try {
       const res = await deleteForm(id);
       if (res && res.data?.success === true) {
-        console.log(res);
         toast.success("Xóa biểu mẫu thành công");
         fetchAllData();
       }
@@ -176,10 +175,6 @@ const ManagerInformation = () => {
       dataIndex: "ngaySinh",
       render: (val) =>
         val ? dayjs(val, "DD-MM-YYYY").format("DD-MM-YYYY") : "",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
     },
     {
       title: "Loại giấy tờ XN",
